@@ -1,0 +1,10 @@
+ const sortByGender = (dirPath, boysDir, girlsDir) => {
+                 fs.readdir(dirPath, (err, files) => {
+                     files?.forEach(file => {
+                         fs.readFile(path.join(dirPath, file), (err, data) => {
+                             const {gender} = JSON.parse(data);
+                             move(dirPath, gender === 'male' ? boysDir : girlsDir, file);
+                         })
+                     })
+                 })
+             };
